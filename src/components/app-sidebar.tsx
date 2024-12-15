@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/sidebar";
 
 import { Home, List, Bookmark, Edit3 } from "lucide-react";
+import Link from "next/link";
 
 // This is sample data.
 const data = {
@@ -52,13 +53,13 @@ const data = {
     },
     {
       title: "Create Recipe",
-      url: "#create-recipe",
+      url: "/create",
       icon: <Edit3 />, // Icon for Create Recipe
       items: [],
     },
     {
       title: "My Bookmarks",
-      url: "#my-bookmarks",
+      url: "/bookmark",
       icon: <Bookmark />, // Icon for My Bookmarks
       items: [],
     },
@@ -99,19 +100,19 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             {data.navMain.map((item) => (
               <SidebarMenuItem key={item.title}>
                 <SidebarMenuButton asChild>
-                  <a
-                    href={item.url}
+                  <Link
+                    href={item.url || ""}
                     className="flex items-center gap-2 font-medium"
                   >
                     {item.icon} {item.title}
-                  </a>
+                  </Link>
                 </SidebarMenuButton>
                 {item.items?.length ? (
                   <SidebarMenuSub className="ml-0 border-l-0 px-1.5">
                     {item.items.map((item) => (
                       <SidebarMenuSubItem key={item.title}>
                         <SidebarMenuSubButton asChild>
-                          <a href={item.url}>{item.title}</a>
+                          <Link href={item.url}>{item.title}</Link>
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>
                     ))}

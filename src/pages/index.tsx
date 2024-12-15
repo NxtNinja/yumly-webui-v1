@@ -1,7 +1,11 @@
+import DisplayRecipeCards from "@/components/Home/DisplayRecipeCards";
+
 const index = () => {
   return (
     <>
-      <div className=""></div>
+      <div className="px-4">
+        <DisplayRecipeCards />
+      </div>
     </>
   );
 };
